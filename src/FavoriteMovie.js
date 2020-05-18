@@ -4,8 +4,7 @@ class FavoriteMovie extends Component {
     render(){
         return (
             <li className='user-list-item'>
-                <p>User: <b>{this.props.user.name}</b></p>
-                <code>Favorite Movie: <b>{this.props.movie.name}</b></code>
+                <p>{this.props.user.name +'\'s'} favorite movie is {this.props.movie.name}</p>
             </li>
         );
     }
