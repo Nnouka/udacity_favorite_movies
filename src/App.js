@@ -99,22 +99,7 @@ const movies = {
 };
 
 class App extends Component {
-  getMovie(id) {
-    for (let movId in movies) {
-      if (movies[movId].id.toString() === id.toString()) return movies[movId];
-    }
-  }
-  getFavoriteMovie(userId){
-    const index = profiles.findIndex((f) => f.userID.toString() === userId.toString());
-    return index > -1 ? this.getMovie(profiles[index].favoriteMovieID) : null;
-  }
-  getUserArray() {
-    const res = [];
-    for (let uid in users) {
-      res.push(users[uid]);
-    }
-    return res;
-  }
+  
   render() {
    
     return (
@@ -126,8 +111,8 @@ class App extends Component {
           <h2>Favorite Movies</h2>
           <ul className='user-list'>
             {
-              this.getUserArray().map(
-                u => <FavoriteMovie key={u.id} user={u} movie={this.getFavoriteMovie(u.id)}/>
+              profiles.map(
+                profile => <FavoriteMovie key={profile.id} user={users[profile.userID]} movie={movies[profile.favoriteMovieID]}/>
             )}
           </ul>
 
